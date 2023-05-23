@@ -25,16 +25,16 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () =>{
     cy.get('input[name=firstName')
-            .type('LL')
+            .type('Pedro')
 
     cy.get('input[name=lastName]')
-        .type('this')
+        .type('Pereira')
 
     cy.get('input[type=email]')
-        .type('ls@yopmail.com')
+        .type('pedro@yopmail.com')
 
     cy.get('textarea[name=open-text-area]')
-        .type('teste')
+        .type('test')
 
     cy.get('button[type=submit]')
         .click()

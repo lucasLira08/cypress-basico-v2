@@ -44,18 +44,18 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     });
     it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
         cy.get('input[name=firstName')
-            .type('LL')
-            .should('have.value', 'LL')
+            .type('Pedro')
+            .should('have.value', 'Pedro')
             .clear().should('have.value', '')
 
         cy.get('input[name=lastName]')
-            .type('this')
-            .should('have.value', 'this')
+            .type('Pereira')
+            .should('have.value', 'Pereira')
             .clear().should('have.value', '')
 
         cy.get('input[type=email]')
-            .type('ls@yopmail.com')
-            .should('have.value', 'ls@yopmail.com')
+            .type('pedro@yopmail.com')
+            .should('have.value', 'pedro@yopmail.com')
             .clear().should('have.value', '')
 
         cy.get('textarea[name=open-text-area]')
