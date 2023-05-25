@@ -8,6 +8,7 @@
 /// <reference types="Cypress" />
 
 describe('Central de Atendimento ao Cliente TAT', function () {
+    const longText = 'testetestetestetestetestetestetestetestetestetestetestetesteteste';
     beforeEach(() => {
         cy.visit('./src/index.html')
 
@@ -24,7 +25,20 @@ describe('Central de Atendimento ao Cliente TAT', function () {
             .should('be.visible')
     });
     it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
-        cy.fillMandatoryFieldsAndSubmit()
+        cy.get('input[name=firstName')
+            .type('Pedro')
+
+        cy.get('input[name=lastName]')
+            .type('Pereira')
+
+        cy.get('input[type=email]')
+            .type('pedro@')
+
+        cy.get('textarea[name=open-text-area]')
+            .type('test')
+
+        cy.get('button[type=submit]')
+            .click()
         cy.get('.error')
             .should('be.visible')
     });
@@ -91,6 +105,20 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     it('seleciona um produto (Blog) por seu índice', () => {
         cy.get('#product').select(1)
             .should('have.value', 'blog')
+    });
+
+    it('marca o tipo de atendimento "Feedback"', () => {
+        cy.get('input[type="radio"][value="feedback"]')
+            .check()
+            .should('be.checked')
+    });
+
+    it.only('marca cada tipo de atendimento', () => {
+        cy.get('input[type=radio]')
+            .should('have.length', 3)
+            .each(($radio) => {
+                cy.wrap($radio).check().should('be.checked')
+            } )
     });
 })
 
