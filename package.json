@@ -9,7 +9,9 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cypress run"
+    "test": "cypress run",
+    "cy:view:mobile": "cypress open --config viewportWidth=410 viewportHeight=860",
+    "test:mobile": "cypress run --config viewportWidth=410 viewportHeight=860"
   },  
   "keywords": [
     "Testing",
