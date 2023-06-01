@@ -132,7 +132,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
             .each(checkbox => {
                 expect(checkbox[0].checked).to.eq(true)
             })
-        // Verifica e o último checkbox foi desmarcado.
+        // Verifica se o último checkbox foi desmarcado.
         cy.get('@checkboxes')
             .last()
             .uncheck()
@@ -160,6 +160,15 @@ describe('Central de Atendimento ao Cliente TAT', function () {
             .then(input => {
                 expect(input[0].files[0].name).to.eq('example.json')
             })
+    });
+
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+        cy.get('a[href="privacy.html"]').should('have.attr', 'target', '_blank')
+    });
+
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', () => {
+        cy.get('a[href="privacy.html"]').invoke('removeAttr', 'target').click() 
+        cy.get('#title').contains('CAC TAT - Política de privacidade')
     });
 })
 
