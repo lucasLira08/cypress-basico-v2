@@ -224,5 +224,11 @@ describe('Central de Atendimento ao Cliente TAT', function () {
             expect(response.body).to.include('CAC TAT')
         })
     });
+
+    it.only('Encontra o gato escondido na aplicação', () => {
+        cy.get('#cat')
+            .invoke('show')
+            .should('be.visible')
+    });
 })
 
